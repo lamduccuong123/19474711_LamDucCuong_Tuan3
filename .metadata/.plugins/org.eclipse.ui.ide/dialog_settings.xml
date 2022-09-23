@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\Documents\HK7\KienTrucPhanMem\19474711_LamDucCuong_Tuan3\KTPM_BTTH_Tuan3-master"/>
+			<item value="D:\Documents\HK6\LapTrinhWWW\spring-boot-demo\01-springboot-demo\01-springboot-demo"/>
+			<item value="D:\Documents\HK7\CongNgheMoi\demo"/>
+			<item value="D:\Documents\HK7\KienTrucPhanMem\19474711_LamDucCuong_Tuan3\tuan3"/>
+		</list>
+	</section>
+</section>

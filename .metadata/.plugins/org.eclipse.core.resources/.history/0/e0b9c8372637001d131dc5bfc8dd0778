@@ -1,0 +1,45 @@
+package com.example.tuan3.jwt.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.tuan3.jwt.common.JwtUtils;
+import com.example.tuan3.jwt.repository.RoleRepository;
+import com.example.tuan3.jwt.repository.UserRepository;
+
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+@Autowired
+AuthenticationManager authenticationManager;
+
+@Autowired
+UserRepository userRepository;
+
+@Autowired
+RoleRepository roleRepository;
+
+@Autowired
+PasswordEncoder encoder;
+
+@Autowired
+JwtUtils jwtUtils;
+
+@PostMapping("/signin")
+public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
+
+Authentication authentication = authenticationManager.authenticate(
+new UsernamePasswordAuthenticationToken(loginRequest .getUsername()
+, loginRequest.getPassword()));
+
+SecurityContextHolder.getContext() . setAuthentication(authentication) ;
+String jwt = jwtUtils.generateJwtToken(authentication) ;
+
+UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+List<String> roles = userDetails.getAuthorities().stream()
+

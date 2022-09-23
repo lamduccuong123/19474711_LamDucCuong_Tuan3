@@ -1,0 +1,5 @@
+package com.example.tuan3.jwt.config;
+
+public class AuthEntryPointJwt {
+
+}

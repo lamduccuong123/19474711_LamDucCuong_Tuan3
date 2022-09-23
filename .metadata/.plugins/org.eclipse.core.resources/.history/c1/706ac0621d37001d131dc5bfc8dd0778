@@ -1,0 +1,8 @@
+package com.example.tuan3.jwt.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserDetailsServiceImpl {
+
+}

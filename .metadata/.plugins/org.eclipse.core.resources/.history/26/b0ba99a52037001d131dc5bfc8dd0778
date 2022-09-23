@@ -1,0 +1,47 @@
+package com.example.tuan3.jwt.config;
+
+public class AuthTokenFilter {
+	@Autowired
+	private UserDetailsServiceImpl userDetailsService;
+
+	private static final Logger Logger = LoggerFactory.getLogger(AuthTokenFilter.class);
+
+	@0 verride
+
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response
+	» FilterChain filterChain) throws ServletException, IOException {
+
+	try {
+	String jwt = parseJwt(request);
+	if (jwt != null && jwtUtils.validateIwtToken(jwt)) {
+	String username = jwtUtils.getUserNameFromJwtToken(jwt) ;
+
+	 
+
+	UserDetails userDetails = userDetailsService. loadUserByUsername(username) ;
+
+	UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+	userDetails, null, userDetails.getAuthorities());
+
+	auth. setDetails(new WebAuthenticationDetailsSource() .buildDetails(request));
+
+	SecurityContextHolder .getContext() . setAuthentication(auth) ;
+
+	}
+	} catch (Exception e) {
+
+	Logger.error("Cannot set user authentication: {}", e);
+	+
+
+	filterChain.doFilter(request, response);
+	}
+
+	private String parseJwt(HttpServletRequest request) {
+
+	String headerAuth = request.getHeader("Authorization") ;
+
+	if (StringUtils.hasText(headerAuth) && headerAuth.startswith("Bearer ")) {
+	return headerAuth.substring(7, headerAuth. length());
+	}
+	
+}

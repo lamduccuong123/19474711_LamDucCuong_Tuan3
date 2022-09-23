@@ -1,0 +1,8 @@
+package com.example.tuan3.jwt.common;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class JwtUtils {
+
+}

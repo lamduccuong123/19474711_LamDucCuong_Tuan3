@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+D:\Documents\HK7\KienTrucPhanMem\19474711_LamDucCuong_Tuan3\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1920750926.index
+3350338337.index
+3435648363.index
+919983201.index
+901399692.index
+3413450895.index

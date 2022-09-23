@@ -1,0 +1,30 @@
+package com.example.tuan3.jwt.common;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import org.slf4j.Logger;
+
+import org.slf4j.LoggerFactory;
+
+@Component
+public class JwtUtils {
+	private static final Logger Logger = LoggerFactory.getLogger(JwtUtils.class);
+
+	@Value("${bezkoder.app.jwtSecret}")
+	private String jwtSecret;
+
+	@Value("${bezkoder.app.jwtExpirationMs}")
+	private int jwtExpirationMs;
+
+	public String generateJwtToken(Authentication authentication) {
+	UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+
+	return Jwts.builder()
+	. setSubject ((userPrincipal.getUsername()))
+	.setIssuedAt(new Date())
+	.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+	. SignWith(SignatureAlgorithm.HS512, jwtSecret)
+	-compact();
+	
+}
